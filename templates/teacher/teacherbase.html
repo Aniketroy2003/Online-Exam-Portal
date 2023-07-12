@@ -214,36 +214,7 @@
   </div>
   <!--content end-->
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function () {
-        // Function to handle the change event of the qtype select
-        function handleQTypeChange() {
-            var selectedOption = $("#qtype-select").val();
-
-            // Hide all option fields by default
-            $(".option-fields input").hide();
-
-            if (selectedOption === "Fill in the blanks") {
-                // Show only the question field for "Fill in the blanks" option
-                $(".option-fields .label").hide();
-                $(".blankans").show()
-                $("#id_question").closest(".option-fields").find("input[type=text]").show();
-            } else if (selectedOption === "MCQ") {
-                // Show all option fields for "MCQ" option
-                $(".option-fields .label").show();
-                $(".option-fields input").show();
-                $(".blankans").hide()
-            }
-        }
-
-        // Trigger the change event handler on page load
-        handleQTypeChange();
-
-        // Bind the change event handler to the qtype select
-        $("#qtype-select").change(handleQTypeChange);
-    });
-</script>
+  
 </body>
 
 </html>

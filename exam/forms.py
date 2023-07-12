@@ -17,6 +17,20 @@ class CourseForm(forms.ModelForm):
 
 class QuestionForm(forms.ModelForm):
     
+    def __init__(self, *args, **kwargs):
+        super(QuestionForm, self).__init__(*args, **kwargs)
+        self.fields['answer'].required = False
+
+    def clean(self):
+        cleaned_data = super().clean()
+        qtype = cleaned_data.get('qtype')
+
+        if qtype == 'Fill in the blanks':
+            answer = cleaned_data.get('answer')
+            if not answer:
+                self.add_error('answer', 'This field is required for "Fill in the blanks" questions.')
+            else:
+                cleaned_data['blankans'] = answer
     #this will show dropdown __str__ method course model is shown on html so override it
     #to_field_name this will fetch corresponding value  user_id present in course model and return it
     courseID=forms.ModelChoiceField(queryset=models.Course.objects.all(),empty_label="Course Name", to_field_name="id")
