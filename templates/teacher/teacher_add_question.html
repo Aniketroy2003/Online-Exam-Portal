@@ -38,8 +38,8 @@
       {% render_field questionForm.answer|attr:'required:true' class="form-control form-control-sm rounded-0 label" %}
     </div>
 
-    <label for="blankans" class="blankans">Answer</label>
-      {% render_field questionForm.blankans|attr:'required:true' class="form-control form-control-sm rounded-0 blankans" placeholder="Example: Jupiter" %}
+    {% comment %} <label for="blankans" class="blankans">Answer</label>
+      {% render_field questionForm.blankans|attr:'required:true' class="form-control form-control-sm rounded-0 blankans" placeholder="Example: Jupiter" %} {% endcomment %}
   </div>
     
 
@@ -48,7 +48,7 @@
 <br><br><br>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
+  {% comment %} <script>
     $(document).ready(function () {
         // Function to handle the change event of the qtype select
         function handleQTypeChange() {
@@ -76,5 +76,5 @@
         // Bind the change event handler to the qtype select
         $("#qtype-select").change(handleQTypeChange);
     });
-</script> 
+</script>  {% endcomment %}
 {% endblock content %}

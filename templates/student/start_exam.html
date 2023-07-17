@@ -29,7 +29,7 @@
     }
   
     window.onload = function () {
-      var duration = 10/* specify the duration in seconds */;
+      var duration = {{ course.timer }}*60/* specify the duration in seconds */;
       var display = document.querySelector('#timer');
       startTimer(duration, display);
     };

@@ -9,10 +9,17 @@ def get_audio_upload_path(instance, filename):
     return os.path.join('audio/', filename)
 
 class Course(models.Model):
+   TIMER_CHOICES = (
+        (30, '30 minutes'),
+        (45, '45 minutes'),
+        (60, '60 minutes'),
+        (90, '90 minutes'),
+    )
    course_name = models.CharField(max_length=50)
    question_number = models.PositiveIntegerField()
    total_marks = models.PositiveIntegerField()
    audio = models.FileField(upload_to=get_audio_upload_path, null=True, blank=True)
+   timer = models.IntegerField(choices=TIMER_CHOICES, null=True, blank=True)
 
    def __str__(self):
         return self.course_name
